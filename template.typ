@@ -28,11 +28,9 @@
 // modificated by lil4rain, fixed issues with locate function [deprecated]
 #let footer_header(title, author, course, due_time, group, body) = {
   set page(
-    footer: {
-      let cur_page = context counter(page).get().at(0)
-      if (cur_page == 1) {
-        none
-      } else {
+    footer: context {
+      let cur_page = counter(page).get().first()
+      if (cur_page != 1) {
         let total_pages = context[#counter(page).final().at(0)]
         line(length: 100%)
         [Стр. #cur_page из #total_pages ]
